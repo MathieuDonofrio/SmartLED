@@ -3,12 +3,11 @@
 
 namespace smartled::sinric
 {
-  void Initialize() noexcept;
+void Initialize() noexcept;
 
-  void Handle() noexcept;
+void Handle() noexcept;
 
-  bool IsPowerOn() noexcept;
-}
-
+bool IsPowerOn() noexcept;
+} // namespace smartled::sinric
 
 #endif

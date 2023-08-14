@@ -4,18 +4,18 @@
 
 namespace smartled
 {
-ShowGenerator StaticColorEffect::Show() noexcept 
+ShowGenerator StaticColorEffect::Show() noexcept
 {
   co_yield 1s;
 }
 
 void StaticColorEffect::OnStart() noexcept
 {
-  std::fill(strip::leds.begin(), strip::leds.end(), _color);
+  std::fill(strip::leds.begin(), strip::leds.end(), strip::color);
 }
 
 void StaticColorEffect::OnStop() noexcept
 {
   std::fill(strip::leds.begin(), strip::leds.end(), Color::Black);
 }
-} // namespace ledshow
+} // namespace smartled

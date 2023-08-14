@@ -4,7 +4,7 @@
 
 namespace smartled
 {
-ShowGenerator CylonEffect::Show() noexcept 
+ShowGenerator CylonEffect::Show() noexcept
 {
   const size_t steps = strip::leds.size() - _size + 1;
 
@@ -14,7 +14,7 @@ ShowGenerator CylonEffect::Show() noexcept
 
     for (uint32_t j = 0; j < _size; ++j)
     {
-      strip::leds[i + j] = _color;
+      strip::leds[i + j] = strip::color;
     }
 
     co_yield _move_delay;
@@ -28,7 +28,7 @@ ShowGenerator CylonEffect::Show() noexcept
 
     for (uint32_t j = 0; j < _size; ++j)
     {
-      strip::leds[i + j] = _color;
+      strip::leds[i + j] = strip::color;
     }
 
     co_yield _move_delay;
@@ -46,4 +46,4 @@ void CylonEffect::OnStop() noexcept
 {
   std::fill(strip::leds.begin(), strip::leds.end(), Color::Black);
 }
-} // namespace ledshow
+} // namespace smartled

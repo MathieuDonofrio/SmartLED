@@ -8,9 +8,7 @@ namespace smartled
 class ColorWipeEffect
 {
 public:
-  ColorWipeEffect(
-    const Color& color, std::chrono::milliseconds delay) noexcept
-    : _color(color), _delay(delay) {}
+  ColorWipeEffect(std::chrono::milliseconds delay) noexcept : _delay(delay) {}
 
   ShowGenerator Show() noexcept;
 
@@ -19,9 +17,8 @@ public:
   void OnStop() noexcept;
 
 private:
-  Color _color;
   std::chrono::milliseconds _delay;
 };
-} // namespace ledshow
+} // namespace smartled
 
 #endif

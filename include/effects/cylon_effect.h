@@ -8,9 +8,12 @@ namespace smartled
 class CylonEffect
 {
 public:
-  CylonEffect(
-    const Color& color, uint32_t size, std::chrono::milliseconds move_delay, std::chrono::milliseconds return_delay) noexcept
-    : _color(color), _size(size), _move_delay(move_delay), _return_delay(return_delay) {}
+  CylonEffect(const Color& color,
+    uint32_t size,
+    std::chrono::milliseconds move_delay,
+    std::chrono::milliseconds return_delay) noexcept
+    : _color(color), _size(size), _move_delay(move_delay), _return_delay(return_delay)
+  {}
 
   ShowGenerator Show() noexcept;
 
@@ -24,6 +27,6 @@ private:
   std::chrono::milliseconds _move_delay;
   std::chrono::milliseconds _return_delay;
 };
-} // namespace ledshow
+} // namespace smartled
 
 #endif

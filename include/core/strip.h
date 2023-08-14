@@ -4,9 +4,9 @@
 #include <array>
 #include <chrono>
 
+#include "config.h"
 #include "utility/color.h"
 #include "utility/generator.h"
-#include "config.h"
 
 using namespace std::chrono_literals;
 
@@ -24,8 +24,7 @@ namespace strip
   void Show() noexcept;
 
   void SetBrightness(uint8_t brightness) noexcept;
-}
-}
-
+} // namespace strip
+} // namespace smartled
 
 #endif

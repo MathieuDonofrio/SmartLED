@@ -4,11 +4,11 @@
 
 namespace smartled
 {
-ShowGenerator ColorWipeEffect::Show() noexcept 
+ShowGenerator ColorWipeEffect::Show() noexcept
 {
   for (auto& led : strip::leds)
   {
-    led = _color;
+    led = strip::color;
     co_yield _delay;
   }
 
@@ -28,4 +28,4 @@ void ColorWipeEffect::OnStop() noexcept
 {
   std::fill(strip::leds.begin(), strip::leds.end(), Color::Black);
 }
-} // namespace ledshow
+} // namespace smartled

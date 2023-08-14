@@ -9,9 +9,9 @@ namespace smartled
 class TwinkleEffect
 {
 public:
-  TwinkleEffect(
-    const Color& color, size_t count, std::chrono::milliseconds delay) noexcept
-    : _color(color), _count(count), _delay(delay), _random() {}
+  TwinkleEffect(const Color& color, size_t count, std::chrono::milliseconds delay) noexcept
+    : _color(color), _count(count), _delay(delay), _random()
+  {}
 
   ShowGenerator Show() noexcept;
 
@@ -26,6 +26,6 @@ private:
 
   Random _random;
 };
-} // namespace ledshow
+} // namespace smartled
 
 #endif

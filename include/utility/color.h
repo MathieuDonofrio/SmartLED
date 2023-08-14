@@ -183,6 +183,6 @@ struct Color
     FairyLightNCC = 0xFF9D2A
   };
 };
-} // namespace ledshow
+} // namespace smartled
 
 #endif

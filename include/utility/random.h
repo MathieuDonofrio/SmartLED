@@ -9,7 +9,7 @@ class Random
 {
 public:
   using result_type = uint32_t;
-  
+
   static constexpr uint64_t cMultiplier = 6364136223846793005ull;
   static constexpr uint64_t cIncrement = 1442695040888963407ull;
 
@@ -57,6 +57,6 @@ public:
 private:
   uint64_t state_;
 };
-}
+} // namespace smartled
 
 #endif

@@ -6,13 +6,13 @@
 
 namespace smartled
 {
-ShowGenerator TwinkleEffect::Show() noexcept 
+ShowGenerator TwinkleEffect::Show() noexcept
 {
   std::uniform_int_distribution<> dist(0, strip::leds.size() - 1);
 
   for (size_t i = 0; i < _count; ++i)
   {
-    strip::leds[dist(_random)] = _color;
+    strip::leds[dist(_random)] = strip::color;
 
     co_yield _delay;
   }
@@ -33,4 +33,4 @@ void TwinkleEffect::OnStop() noexcept
 {
   std::fill(strip::leds.begin(), strip::leds.end(), Color::Black);
 }
-} // namespace ledshow
+} // namespace smartled

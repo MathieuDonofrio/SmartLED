@@ -3,9 +3,9 @@
 #define GENERATOR_H
 
 #include <coroutine>
+#include <exception>
 #include <ranges>
 #include <utility>
-#include <exception>
 
 namespace smartled
 {
@@ -20,7 +20,7 @@ namespace details
     using value_type = std::remove_reference_t<T>;
     using reference_type = std::add_lvalue_reference_t<value_type>;
     using pointer_type = std::add_pointer_t<value_type>;
-    
+
     T _value;
 
     GeneratorPromise() noexcept = default;
@@ -136,7 +136,7 @@ public:
 
   iterator end() noexcept
   {
-    return {_handle, true};
+    return { _handle, true };
   }
 
   void swap(Generator& other) noexcept
@@ -162,6 +162,6 @@ namespace details
   }
 } // namespace details
 
-} // namespace ledshow
+} // namespace smartled
 
 #endif

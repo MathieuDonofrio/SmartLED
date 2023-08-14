@@ -3,7 +3,7 @@
 
 namespace smartled::wifi
 {
-  void Connect() noexcept;
+void Connect() noexcept;
 }
 
 #endif

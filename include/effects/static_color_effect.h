@@ -19,6 +19,6 @@ public:
 private:
   Color _color;
 };
-} // namespace ledshow
+} // namespace smartled
 
 #endif
