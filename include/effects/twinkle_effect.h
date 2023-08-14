@@ -1,10 +1,10 @@
 #ifndef TWINKLE_EFFECT_H
 #define TWINKLE_EFFECT_H
 
-#include "led_strip.h"
-#include "random.h"
+#include "core/strip.h"
+#include "utility/random.h"
 
-namespace ledshow
+namespace smartled
 {
 class TwinkleEffect
 {

@@ -1,9 +1,9 @@
 #ifndef CYLON_EFFECT_H
 #define CYLON_EFFECT_H
 
-#include "led_strip.h"
+#include "core/strip.h"
 
-namespace ledshow
+namespace smartled
 {
 class CylonEffect
 {

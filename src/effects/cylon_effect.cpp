@@ -1,8 +1,8 @@
 #include "effects/cylon_effect.h"
 
-#include "led_strip.h"
+#include "core/strip.h"
 
-namespace ledshow
+namespace smartled
 {
 ShowGenerator CylonEffect::Show() noexcept 
 {

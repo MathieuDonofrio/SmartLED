@@ -1,13 +1,13 @@
 
-#ifndef GENERATOR_HPP
-#define GENERATOR_HPP
+#ifndef GENERATOR_H
+#define GENERATOR_H
 
 #include <coroutine>
 #include <ranges>
 #include <utility>
 #include <exception>
 
-namespace ledshow
+namespace smartled
 {
 template<typename T>
 class Generator;

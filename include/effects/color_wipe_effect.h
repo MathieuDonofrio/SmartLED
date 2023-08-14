@@ -1,9 +1,9 @@
 #ifndef COLOR_WIPE_EFFECT_H
 #define COLOR_WIPE_EFFECT_H
 
-#include "led_strip.h"
+#include "core/strip.h"
 
-namespace ledshow
+namespace smartled
 {
 class ColorWipeEffect
 {

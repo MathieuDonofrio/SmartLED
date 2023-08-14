@@ -1,9 +1,9 @@
 #ifndef STATIC_COLOR_EFFECT_H
 #define STATIC_COLOR_EFFECT_H
 
-#include "led_strip.h"
+#include "core/strip.h"
 
-namespace ledshow
+namespace smartled
 {
 class StaticColorEffect
 {

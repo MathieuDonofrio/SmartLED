@@ -4,7 +4,7 @@
 #include <bit>
 #include <cstdint>
 
-namespace ledshow
+namespace smartled
 {
 struct Color
 {

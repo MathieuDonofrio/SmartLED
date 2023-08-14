@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-namespace ledshow
+namespace smartled
 {
 class Random
 {
