@@ -17,7 +17,6 @@ using ShowGenerator = Generator<std::chrono::milliseconds>;
 namespace strip
 {
   extern std::array<Color, LedAmount> leds;
-  extern Color color;
 
   void Initialize() noexcept;
 

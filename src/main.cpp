@@ -4,61 +4,54 @@
 #include "core/sinric.h"
 #include "core/wifi.h"
 
-#include "effects/static_color_effect.h"
+#include <variant>
 
 using namespace smartled;
 
 void setup() {
   Serial.begin(BaudRate);
+
+  Serial.println("Starting...");
+
+  Serial.println("Initializing LED Strip...");
   strip::Initialize();
-  wifi::Connect();
-  sinric::Initialize();
+  Serial.println("LED Strip initialized.");
+
+  Serial.print("Connecting to WiFi network");
+  if(!wifi::IsConnected())
+  {
+    wifi::Connect();
+
+    while (!wifi::IsConnected())
+    {
+      Serial.print(".");
+      delay(500);
+    }
+  }
+  Serial.println("");
+  Serial.println("Connected to WiFi network.");
+
+  Serial.println("Connecting to SinricPro...");
+  sinric::Connect();
+  Serial.println("Connected to SinricPro.");
+
+  Serial.println("Ready.");
 }
 
 void loop() {
-  sinric::Handle();
-
-  if (sinric::IsPowerOn())
+  for(;;)
   {
-    std::fill(strip::leds.begin(), strip::leds.end(), strip::color);
-    strip::Show();
+    sinric::Handle();
+
+    if (sinric::IsPowerOn())
+    {
+      Color color = sinric::GetColor();
+
+      std::fill(strip::leds.begin(), strip::leds.end(), color);
+
+      strip::Show();
+    }
+
+    delay(100);
   }
-
-  delay(100);
 }
-
-// #include <Arduino.h>
-
-// #include "led_strip.h"
-// #include "effects/static_color_effect.h"
-// #include "effects/color_wipe_effect.h"
-// #include "effects/cylon_effect.h"
-// #include "effects/twinkle_effect.h"
-
-// using namespace ledshow;
-
-// StaticColorEffect static_color_effect(Color::White);
-// ColorWipeEffect color_wipe_effect(Color::Green, 100ms);
-// CylonEffect cylon_effect(Color::Red, 3, 100ms, 500ms);
-// TwinkleEffect twinkle_effect(Color::Blue, 8, 150ms);
-
-// void setup() {
-//   Serial.begin(115200);
-
-//   strip::Initialize();
-// }
-
-// void loop() {
-//   twinkle_effect.OnStart();
-
-//   strip::Show();
-
-//   while(true)
-//   {
-//     for(auto d : twinkle_effect.Show())
-//     {
-//       strip::Show();
-//       delay(d.count());
-//     }    
-//   }
-// }

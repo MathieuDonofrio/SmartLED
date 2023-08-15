@@ -10,16 +10,13 @@
 
 namespace smartled::wifi
 {
+bool IsConnected() noexcept
+{
+  return WiFi.SSID() == WiFiSSID && WiFi.status() == WL_CONNECTED;
+}
+
 void Connect() noexcept
 {
-  Serial.printf("\r\n[Wifi]: Connecting");
-
-  if (WiFi.SSID() == WiFiSSID && WiFi.status() == WL_CONNECTED)
-  {
-    Serial.printf("\r\n[Wifi]: Already connected!");
-    return;
-  }
-
   WiFi.persistent(true);
   WiFi.setAutoConnect(true);
   WiFi.setAutoReconnect(true);
@@ -30,15 +27,6 @@ void Connect() noexcept
   WiFi.setSleep(false);
 #endif
 
-  WiFi.begin(WiFiSSID, WiFiPass, 0, WiFiBSSID.data());
-
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    Serial.printf(".");
-    delay(500);
-  }
-
-  IPAddress localIP = WiFi.localIP();
-  Serial.printf("\r\n[Wifi]: Connected!\r\n[WiFi]: IP-Address is %s\r\n", localIP.toString().c_str());
+  WiFi.begin(WiFiSSID, WiFiPass, 0, WiFiBSSID);
 }
 } // namespace smartled::wifi

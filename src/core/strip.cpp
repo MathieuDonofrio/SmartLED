@@ -7,7 +7,6 @@
 namespace smartled::strip
 {
 std::array<Color, LedAmount> leds;
-Color color;
 
 void Initialize() noexcept
 {
@@ -16,11 +15,6 @@ void Initialize() noexcept
   FastLED.addLeds<WS2812B, DataPin, GRB>(fledcolors, LedAmount).setCorrection(TypicalLEDStrip);
   FastLED.clear(true);
   FastLED.setBrightness(255);
-}
-
-void Uninitialize() noexcept
-{
-  FastLED.clear(true);
 }
 
 void Show() noexcept
