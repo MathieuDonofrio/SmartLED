@@ -1,38 +1,44 @@
 #include <Arduino.h>
 
-#include "core/strip.h"
-#include "core/sinric.h"
-#include "core/wifi.h"
+#include "drivers/strip.h"
+#include "drivers/sinric.h"
+#include "drivers/wifi.h"
 
-#include <variant>
-
-using namespace smartled;
+using namespace smartled; 
 
 void setup() {
-  Serial.begin(BaudRate);
+  Serial.begin(BaudRate); 
+  Serial.setDebugOutput(true);
+  Serial.println();
 
-  Serial.println("Starting...");
-
-  Serial.println("Initializing LED Strip...");
   strip::Initialize();
+
   Serial.println("LED Strip initialized.");
 
-  Serial.print("Connecting to WiFi network");
+  Serial.println("Connecting to WiFi network");
+
   if(!wifi::IsConnected())
   {
     wifi::Connect();
 
     while (!wifi::IsConnected())
     {
-      Serial.print(".");
       delay(500);
     }
   }
-  Serial.println("");
+
   Serial.println("Connected to WiFi network.");
 
-  Serial.println("Connecting to SinricPro...");
+  Serial.println("Connecting to SinricPro");
+
   sinric::Connect();
+
+  while (!sinric::IsConnected())
+  {
+    sinric::Handle();
+    delay(500);
+  }
+
   Serial.println("Connected to SinricPro.");
 
   Serial.println("Ready.");

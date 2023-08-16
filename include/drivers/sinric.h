@@ -1,5 +1,5 @@
-#ifndef SINRIC_H
-#define SINRIC_H
+#ifndef DRIVERS_SINRIC_H
+#define DRIVERS_SINRIC_H
 
 #include "utility/color.h"
 
@@ -8,6 +8,8 @@ namespace smartled::sinric
 void Connect() noexcept;
 
 void Handle() noexcept;
+
+bool IsConnected() noexcept;
 
 bool IsPowerOn() noexcept;
 

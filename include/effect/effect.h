@@ -1,5 +1,5 @@
-#ifndef EFFECT_TEMPLATE_H
-#define EFFECT_TEMPLATE_H
+#ifndef EFFECT_EFFECT_H
+#define EFFECT_EFFECT_H
 
 #include <concepts>
 

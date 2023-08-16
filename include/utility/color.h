@@ -1,5 +1,5 @@
-#ifndef COLOR_H
-#define COLOR_H
+#ifndef UTILITY_COLOR_H
+#define UTILITY_COLOR_H
 
 #include <bit>
 #include <cstdint>

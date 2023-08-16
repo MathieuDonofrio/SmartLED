@@ -1,6 +1,6 @@
 
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#ifndef UTILITY_GENERATOR_H
+#define UTILITY_GENERATOR_H
 
 #include <coroutine>
 #include <exception>

@@ -1,4 +1,4 @@
-#include "core/sinric.h"
+#include "drivers/sinric.h"
 
 #include "SinricPro.h"
 #include "SinricProLight.h"
@@ -8,12 +8,23 @@
 
 namespace smartled::sinric
 {
+bool connected = false;
 bool power_state = false;
 int brightness = 100;
 Color color = Color::White;
 
 namespace handlers
 {
+  void onConnected() noexcept
+  {
+    connected = true;
+  }
+
+  void onDisconnected() noexcept
+  {
+    connected = false;
+  }
+
   bool onPowerState(const String&, bool& new_power_state) noexcept
   {
     power_state = new_power_state;
@@ -44,21 +55,27 @@ void Connect() noexcept
 {
   SinricProLight& light = SinricPro[LightID];
 
+  SinricPro.onConnected(handlers::onConnected);
+  SinricPro.onDisconnected(handlers::onDisconnected);
+
   light.onPowerState(handlers::onPowerState);
   light.onBrightness(handlers::onBrightness);
   light.onAdjustBrightness(handlers::onAdjustBrightness);
   light.onColor(handlers::onColor);
 
-  SinricPro.onConnected([]() { Serial.println("Connected to SinricPro."); });
-  SinricPro.onDisconnected([]() { Serial.println("Disconnected from SinricPro."); });
-
   SinricPro.restoreDeviceStates(true);
+
   SinricPro.begin(AppKey, AppSecret);
 }
 
 void Handle() noexcept
 {
   SinricPro.handle();
+}
+
+bool IsConnected() noexcept
+{
+  return connected;
 }
 
 bool IsPowerOn() noexcept

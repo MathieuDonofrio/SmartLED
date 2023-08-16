@@ -1,5 +1,5 @@
-#ifndef STRIP_H
-#define STRIP_H
+#ifndef DRIVERS_STRIP_H
+#define DRIVERS_STRIP_H
 
 #include <array>
 #include <chrono>

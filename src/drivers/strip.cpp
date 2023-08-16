@@ -1,4 +1,4 @@
-#include "core/strip.h"
+#include "drivers/strip.h"
 
 #define FASTLED_ESP8266_DMA
 #define FASTLED_ESP8266_RAW_PIN_ORDER
@@ -10,11 +10,15 @@ std::array<Color, LedAmount> leds;
 
 void Initialize() noexcept
 {
+  std::fill(leds.begin(), leds.end(), Color::Black);
+
   CRGB* fledcolors = reinterpret_cast<CRGB*>(leds.data()); // TODO bitcast
 
   FastLED.addLeds<WS2812B, DataPin, GRB>(fledcolors, LedAmount).setCorrection(TypicalLEDStrip);
   FastLED.clear(true);
   FastLED.setBrightness(255);
+
+  FastLED.show();
 }
 
 void Show() noexcept
