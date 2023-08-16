@@ -51,12 +51,18 @@ void loop() {
 
     if (sinric::IsPowerOn())
     {
+      strip::SetBrightness(sinric::GetBrightness());
+
       Color color = sinric::GetColor();
 
       std::fill(strip::leds.begin(), strip::leds.end(), color);
-
-      strip::Show();
     }
+    else
+    {
+      strip::SetBrightness(0);
+    }
+
+    strip::Show();
 
     delay(100);
   }

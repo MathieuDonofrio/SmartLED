@@ -28,7 +28,6 @@ namespace handlers
   bool onPowerState(const String&, bool& new_power_state) noexcept
   {
     power_state = new_power_state;
-    brightness = power_state ? 100 : 0;
     return true;
   }
 

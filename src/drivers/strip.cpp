@@ -10,9 +10,11 @@ std::array<Color, LedAmount> leds;
 
 void Initialize() noexcept
 {
+  delay(1000);
+  
   std::fill(leds.begin(), leds.end(), Color::Black);
 
-  CRGB* fledcolors = reinterpret_cast<CRGB*>(leds.data()); // TODO bitcast
+  CRGB* fledcolors = reinterpret_cast<CRGB*>(leds.data());
 
   FastLED.addLeds<WS2812B, DataPin, GRB>(fledcolors, LedAmount).setCorrection(TypicalLEDStrip);
   FastLED.clear(true);

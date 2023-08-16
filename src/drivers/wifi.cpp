@@ -12,12 +12,19 @@ namespace smartled::wifi
 {
 void Connect() noexcept
 {
-  wifi_set_sleep_type(NONE_SLEEP_T);
-  WiFi.persistent(false);
-  WiFi.mode(WIFI_OFF);
   WiFi.mode(WIFI_STA);
 
-  WiFi.begin(WiFiSSID, WiFiPass, 6, WiFiBSSID);
+#if defined(ESP8266)
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
+#elif defined(ESP32)
+  WiFi.setSleep(false);
+#endif
+
+  WiFi.persistent(true);
+  WiFi.setAutoConnect(true);
+  WiFi.setAutoReconnect(true);
+
+  WiFi.begin(WiFiSSID, WiFiPass, 0, WiFiBSSID);
 }
 
 bool IsConnected() noexcept

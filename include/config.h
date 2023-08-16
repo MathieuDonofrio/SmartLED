@@ -6,8 +6,8 @@
 
 namespace smartled
 {
-constexpr const char* WiFiSSID = "BELL130";
-constexpr const char* WiFiPass = "2C6DE112FC34";
+constexpr const char* WiFiSSID = "Matt Phone";//"BELL130";
+constexpr const char* WiFiPass = "Matt123123"; //"2C6DE112FC34";
 constexpr const uint8_t* WiFiBSSID = nullptr; // For faster connection
 
 constexpr const char* AppKey = "2b091221-c2a9-41da-86d4-c7376f6cf4ae";
