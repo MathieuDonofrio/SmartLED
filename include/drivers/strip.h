@@ -12,8 +12,6 @@ using namespace std::chrono_literals;
 
 namespace smartled
 {
-using ShowGenerator = Generator<std::chrono::milliseconds>;
-
 namespace strip
 {
   extern std::array<Color, LedAmount> leds;
