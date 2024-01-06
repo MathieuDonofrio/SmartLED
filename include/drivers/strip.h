@@ -5,8 +5,10 @@
 #include <chrono>
 
 #include "config.h"
-#include "utility/color.h"
-#include "utility/generator.h"
+
+#define FASTLED_ESP8266_DMA
+#define FASTLED_ESP8266_RAW_PIN_ORDER
+#include <FastLED.h>
 
 using namespace std::chrono_literals;
 
@@ -14,7 +16,9 @@ namespace smartled
 {
 namespace strip
 {
-  extern std::array<Color, LedAmount> leds;
+  constexpr size_t size = LedAmount;
+
+  extern std::array<CRGB, size> leds;
 
   void Initialize() noexcept;
 

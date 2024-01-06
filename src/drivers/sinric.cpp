@@ -4,14 +4,14 @@
 #include "SinricProLight.h"
 
 #include "config.h"
-#include "utility/color.h"
+#include "drivers/strip.h"
 
 namespace smartled::sinric
 {
 bool connected = false;
 bool power_state = false;
 int brightness = 100;
-Color color = Color::White;
+CRGB color = CRGB::White;
 
 namespace handlers
 {
@@ -45,7 +45,7 @@ namespace handlers
 
   bool onColor(const String&, byte& r, byte& g, byte& b) noexcept
   {
-    color = Color(r, g, b);
+    color = CRGB(r, g, b);
     return true;
   }
 } // namespace handlers
@@ -87,9 +87,8 @@ uint8_t GetBrightness() noexcept
   return map(brightness, 0, 100, 0, 255);
 }
 
-Color GetColor() noexcept
+CRGB GetColor() noexcept
 {
   return color;
 }
-
 } // namespace smartled::sinric

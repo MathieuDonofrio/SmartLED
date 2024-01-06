@@ -4,18 +4,20 @@
 #include <concepts>
 #include <chrono>
 
-#include "utility/color.h"
+#include "drivers/strip.h"
 #include "utility/generator.h"
+#include "utility/noise.h"
+#include "utility/random.h"
 
 namespace smartled
 {
 using ShowGenerator = Generator<std::chrono::milliseconds>;
 
-template <typename T>
-concept Effect = requires(T effect, const Color& color)
+std::chrono::milliseconds time_ms() noexcept
 {
-  { effect.Show(color) } -> std::same_as<ShowGenerator>;
-};
+  auto time = std::chrono::system_clock::now().time_since_epoch();
+  return std::chrono::duration_cast<std::chrono::milliseconds>(time);
+}
 } // namespace smartled
 
 #endif

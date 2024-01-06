@@ -2,6 +2,7 @@
 #define UTILITY_RANDOM_H
 
 #include <cstdint>
+#include <random>
 
 namespace smartled
 {

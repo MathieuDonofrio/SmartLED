@@ -1,7 +1,7 @@
 #ifndef DRIVERS_SINRIC_H
 #define DRIVERS_SINRIC_H
 
-#include "utility/color.h"
+#include "drivers/strip.h"
 
 namespace smartled::sinric
 {
@@ -15,7 +15,7 @@ bool IsPowerOn() noexcept;
 
 uint8_t GetBrightness() noexcept;
 
-Color GetColor() noexcept;
+CRGB GetColor() noexcept;
 } // namespace smartled::sinric
 
 #endif
